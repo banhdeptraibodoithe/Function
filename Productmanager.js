@@ -1,8 +1,5 @@
-let products = [];
-for (let i = 0; i < localStorage.length; i++)
-{
-    products.push(localStorage.getItem(i));
-}
+let products;
+getStoreLocal();
 displayProducts();
 let flag = true;
 let checkEdit = 0;
@@ -133,8 +130,19 @@ function searchProducts()
 }
 function updateStoreLocal()
 {
-    for (let i = 0; i < products.length; i++)
+   let data = JSON.stringify(products);
+   localStorage.setItem("products", data); 
+}
+function getStoreLocal()
+{
+    let data = localStorage.getItem("products");
+    if (data)
     {
-        localStorage.setItem(i, products[i]);
+        products = JSON.parse(data);
+    }
+    else
+    {
+        products = [];
+        updateStoreLocal();
     }
 }
