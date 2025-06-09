@@ -53,7 +53,8 @@ function editProducts(index)
         checkEdit = index;
         document.getElementById("title").innerHTML = "Thay đổi mặt hàng mới cho " + products[index];
         document.getElementById("product").placeholder = "Nhập giá trị muốn thay đổi";
-        document.getElementById(`${index}`).innerHTML = "Lưu";
+        document.getElementById("product").value = products[index];
+        document.getElementById("edit").innerHTML = `<button  onclick= editProducts(${index})>Lưu sản phẩm</button>`;
         flag = false;
     }
     else{
@@ -75,7 +76,7 @@ function editProducts(index)
                 alert("Mặt hàng đã tồn tại không thể sửa đổi");
                 document.getElementById("title").innerHTML = "Quản Lý Sản Phẩm";
                 document.getElementById("product").placeholder = "Tên sản phẩm ...";
-                document.getElementById(`${index}`).innerHTML = "Sửa";
+                document.getElementById("edit").innerHTML = `<button id = add onclick= addProducts()>Thêm vào kho</button>`;
                 flag = true;
                 document.getElementById("product").value = "";
                 displayProducts();
@@ -86,7 +87,7 @@ function editProducts(index)
         updateStoreLocal();
         document.getElementById("title").innerHTML = "Quản Lý Sản Phẩm";
         document.getElementById("product").placeholder = "Tên sản phẩm ...";
-        document.getElementById(`${index}`).innerHTML = "Sửa";
+        document.getElementById("edit").innerHTML = `<button id = add onclick= addProducts()>Thêm vào kho</button>`;
         flag = true;
         document.getElementById("product").value = "";
         displayProducts();
